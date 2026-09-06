@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch checkpoints and model weights
+/checkpoints/
+*.pt
+*.pth
+*.bin
+*.onnx
+yolov8*.pt
+
+# Datasets, Generated Interventions, and Results
+/dataset/images/
+/dataset/caltech101/
+/dataset/cifar-100-python/
+/interventions/
+/results/
+*.zip
+*.tar.gz
+
+# Logs, Output and Monitoring
+/logs/
+*.log
+log.out
+/wandb/
+.wandb/
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environments and Secrets
+.env
+.env.*
+.venv
+env/
+venv/
+ENV/
+*api_key*
+*secret*
+*credential*

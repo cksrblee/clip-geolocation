@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probing Spatial and Visual Cues in CLIP Geolocation</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Official project page for 'Probing Spatial and Visual Cues in CLIP Geolocation'. Systematic benchmark and controlled probing suite for fine-grained geolocation.">
+  <meta name="keywords" content="CLIP, Geolocation, Vision-Language Models, Visual Probing, Spatial Structure, Visual Shortcuts, LoRA, OpenCLIP">
+  <meta name="author" content="Geolocation Representation Research Group">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Probing Spatial and Visual Cues in CLIP Geolocation">
+  <meta property="og:description" content="Probing Spatial Structure vs. Visual Shortcuts in Neighborhood-Level Geolocation with CLIP.">
+  <meta property="og:image" content="../figures/Fig_LA_Map_and_StreetView_Dataset.png">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>CLIP-Geo</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#dataset">Dataset</a></li>
+        <li><a href="#framework">Framework</a></li>
+        <li><a href="#livedemo">Live Demo</a></li>
+        <li><a href="#dissection">Dissection</a></li>
+        <li><a href="#qualitative">Qualitative</a></li>
+        <li><a href="#citation">BibTeX</a></li>
+      </ul>
+      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+        <svg id="theme-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <span id="theme-text">Dark</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero-title">Probing <em>Spatial and Visual Cues</em> in CLIP Geolocation</h1>
+      <p class="hero-subtitle">Dissecting Spatial Structure vs. Surface Shortcuts in Neighborhood-Level Place Recognition</p>
+      
+      <div class="hero-meta">
+        <div class="author-group">Geolocation Representation Research Group</div>
+        <div class="affiliation">NeurIPS / CVPR / ArXiv 2026</div>
+      </div>
+
+      <!-- Action Badges -->
+      <div class="hero-badges">
+        <a href="https://arxiv.org" target="_blank" class="badge-btn primary">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Paper (PDF)
+        </a>
+        <a href="https://github.com/cksrblee/clip-geolocation" target="_blank" class="badge-btn">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Code & Benchmark
+        </a>
+        <a href="https://github.com/cksrblee/clip-geolocation/tree/main/dataset" class="badge-btn">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zm0 5h16" />
+          </svg>
+          Dataset (LA 8-Regions)
+        </a>
+        <a href="#citation" class="badge-btn">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          BibTeX
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Abstract Section -->
+  <section id="abstract" class="container">
+    <div class="abstract-box">
+      <h2 class="abstract-title">Abstract</h2>
+      <p class="abstract-text">
+        Vision-language foundation models (e.g., CLIP) have demonstrated remarkable zero-shot capabilities in country-level geolocation, but their internal representations on fine-grained <strong>intra-city geolocation</strong> remain an open question. When adapted to 8 iconic Los Angeles County neighborhoods, CLIP achieves dramatic performance gains (jumping from ~28% zero-shot to <strong>>76% with LoRA</strong> and <strong>>78% with Full Fine-Tuning</strong>). 
+        <br><br>
+        However, what does this gain actually represent? <em>Did the model genuinely internalize the 3D spatial layout and architectural identity of each neighborhood, or did it overfit to surface-level visual shortcuts such as storefront text, vegetation distributions, and vehicle types?</em>
+        <br><br>
+        To dissect this representation dilemma, we formulate a controlled 3-bundle probing protocol: (1) <strong>Bundle A (Shortcut Removal)</strong> via EasyOCR, YOLOv8, and SegFormer inpainting; (2) <strong>Bundle B (Structure Preservation)</strong> via Canny edges and dense depth maps; and (3) <strong>Bundle C (Spatial Configuration Probing)</strong> via multi-scale patch scrambling. Our empirical results demonstrate a <strong>Mixed Account</strong>: while adapted models amplify reliance on textual signage ($\Delta\text{SR} > 0$), they simultaneously learn genuine 3D geometric layout representations ($\Delta\text{SS} > 0$), retaining >55% accuracy on pure structural contours alone.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 1: Figure 1 - Dataset & Mapping -->
+  <section id="dataset" class="container">
+    <div class="section-header">
+      <span class="section-tag">Dataset & Geographic Grounding</span>
+      <h2 class="section-title">Figure 1: LA County Neighborhood Dataset & Mapping</h2>
+      <p class="section-subtitle">Fine-grained spatial sampling across 8 iconic Los Angeles County neighborhoods with local GPS distribution and Distinctive vs. Ambiguous heading views.</p>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-img-wrapper">
+        <img src="../figures/Fig_LA_Map_and_StreetView_Dataset.png" alt="Figure 1: LA County Map and Street View Dataset Overview" class="figure-img">
+      </div>
+      <div class="figure-caption">
+        <strong>Figure 1: Spatial Sampling & Street View Diversity Across 8 LA County Neighborhoods.</strong>
+        Each neighborhood panel displays: (Left) Local GPS scatter distribution and exact same-location retrieval baseline accuracy; (Center, Green border) Distinctive heading view capturing neighborhood-defining features (e.g. Downtown LA skyscrapers, Beverly Hills palm boulevards, Koreatown bilingual signage); (Right, Red border) Ambiguous heading view containing generic asphalt roads or low-rise alleys that challenge representation learning.
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Figure 2 - Pipeline Architecture & Framework -->
+  <section id="framework" class="container">
+    <div class="section-header">
+      <span class="section-tag">Methodological Architecture</span>
+      <h2 class="section-title">Figure 2: Overall Pipeline Architecture & Probing Framework</h2>
+      <p class="section-subtitle">Systematic experimental progression from street view dataset ingestion and multi-strategy CLIP adaptation to controlled causal probing and representational interpretation.</p>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-img-wrapper">
+        <svg viewBox="0 0 1200 680" style="width: 100%; height: auto; display: block; background: #fafbfc; font-family: 'Inter', sans-serif;">
+          <g id="p1">
+            <rect x="20" y="20" width="310" height="640" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+            <text x="175" y="55" font-size="16" font-weight="700" text-anchor="middle" fill="#1e293b">1. Input: 8 LA Regions Dataset</text>
+            <text x="175" y="78" font-size="13" fill="#64748b" text-anchor="middle">9,085 Multi-Heading Street View Images</text>
+            <image href="../figures/Fig_LA_Map_and_StreetView_Dataset.png" x="35" y="100" width="280" height="180" preserveAspectRatio="xMidYMid slice" style="border-radius: 8px;"/>
+            <g transform="translate(35, 300)">
+              <rect x="0" y="0" width="135" height="155" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+              <image href="../assets/demo_images/downtown_la_clean.jpg" x="5" y="5" width="125" height="110" preserveAspectRatio="xMidYMid slice"/>
+              <text x="67" y="135" font-size="12" font-weight="600" text-anchor="middle" fill="#334155">Downtown LA</text>
+            </g>
+            <g transform="translate(180, 300)">
+              <rect x="0" y="0" width="135" height="155" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+              <image href="../assets/demo_images/hollywood_clean.jpg" x="5" y="5" width="125" height="110" preserveAspectRatio="xMidYMid slice"/>
+              <text x="67" y="135" font-size="12" font-weight="600" text-anchor="middle" fill="#334155">Hollywood</text>
+            </g>
+            <g transform="translate(35, 470)">
+              <rect x="0" y="0" width="135" height="155" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+              <image href="../assets/demo_images/beverly_hills_clean.jpg" x="5" y="5" width="125" height="110" preserveAspectRatio="xMidYMid slice"/>
+              <text x="67" y="135" font-size="12" font-weight="600" text-anchor="middle" fill="#334155">Beverly Hills</text>
+            </g>
+            <g transform="translate(180, 470)">
+              <rect x="0" y="0" width="135" height="155" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+              <image href="../assets/demo_images/santa_monica_clean.jpg" x="5" y="5" width="125" height="110" preserveAspectRatio="xMidYMid slice"/>
+              <text x="67" y="135" font-size="12" font-weight="600" text-anchor="middle" fill="#334155">Santa Monica</text>
+            </g>
+          </g>
+
+          <path d="M 335 340 L 365 340" stroke="#6366f1" stroke-width="4" marker-end="url(#arrowhead)" fill="none"/>
+
+          <g id="p2" transform="translate(370, 20)">
+            <rect x="0" y="0" width="240" height="640" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+            <text x="120" y="45" font-size="16" font-weight="700" text-anchor="middle" fill="#1e293b">2. CLIP & Adaptations</text>
+            <text x="120" y="68" font-size="13" fill="#6366f1" font-weight="600" text-anchor="middle">ViT-L/14 Vision Backbone</text>
+            
+            <path d="M 30 90 L 210 90 L 170 145 L 70 145 Z" fill="#fdf2f8" stroke="#ec4899" stroke-width="1.5"/>
+            <text x="120" y="122" font-size="13" font-weight="700" text-anchor="middle" fill="#be185d">Image Encoder</text>
+
+            <path d="M 70 155 L 170 155 L 210 210 L 30 210 Z" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+            <text x="120" y="188" font-size="13" font-weight="700" text-anchor="middle" fill="#6d28d9">Text Encoder</text>
+            
+            <text x="120" y="235" font-size="11" fill="#64748b" text-anchor="middle">"A street view photo in {Region}"</text>
+
+            <g transform="translate(20, 255)">
+              <rect x="0" y="0" width="200" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="100" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#1d4ed8">Zero-shot</text>
+              <text x="100" y="42" font-size="11" fill="#60a5fa" text-anchor="middle">No training (Baseline)</text>
+            </g>
+            <g transform="translate(20, 315)">
+              <rect x="0" y="0" width="200" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="100" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#1d4ed8">LP-T / LP-C</text>
+              <text x="100" y="42" font-size="11" fill="#60a5fa" text-anchor="middle">Linear Probing</text>
+            </g>
+            <g transform="translate(20, 375)">
+              <rect x="0" y="0" width="200" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="100" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#1d4ed8">LoRA (PEFT)</text>
+              <text x="100" y="42" font-size="11" fill="#60a5fa" text-anchor="middle">r=8 Low-Rank Adaptation</text>
+            </g>
+            <g transform="translate(20, 435)">
+              <rect x="0" y="0" width="200" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="100" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#1d4ed8">Full Fine-Tuning</text>
+              <text x="100" y="42" font-size="11" fill="#60a5fa" text-anchor="middle">Supervised End-to-End</text>
+            </g>
+            <g transform="translate(20, 495)">
+              <rect x="0" y="0" width="200" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="100" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#1d4ed8">Contrastive FT</text>
+              <text x="100" y="42" font-size="11" fill="#60a5fa" text-anchor="middle">Region-Aware Pairs</text>
+            </g>
+          </g>
+
+          <path d="M 615 340 L 645 340" stroke="#6366f1" stroke-width="4" marker-end="url(#arrowhead)" fill="none"/>
+
+          <g id="p3" transform="translate(650, 20)">
+            <rect x="0" y="0" width="530" height="420" rx="16" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+            <text x="20" y="40" font-size="16" font-weight="700" fill="#9a3412">3. Controlled Probing Interventions</text>
+            <text x="510" y="40" font-size="12" font-weight="600" text-anchor="end" fill="#c2410c">Metrics: SR (Drop) &amp; SS (Retention)</text>
+
+            <g transform="translate(15, 60)">
+              <rect x="0" y="0" width="160" height="230" rx="8" fill="#ffffff" stroke="#ffedd5"/>
+              <text x="80" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#9a3412">Bundle A</text>
+              <text x="80" y="42" font-size="11" text-anchor="middle" fill="#ea580c">Shortcut Removal</text>
+              <image href="../assets/demo_images/downtown_la_text_masked.jpg" x="10" y="55" width="140" height="90" preserveAspectRatio="xMidYMid slice"/>
+              <text x="80" y="165" font-size="11" text-anchor="middle" fill="#475569">• Text Masking (OCR)</text>
+              <text x="80" y="185" font-size="11" text-anchor="middle" fill="#475569">• Vehicle/Person (YOLO)</text>
+              <text x="80" y="205" font-size="11" text-anchor="middle" fill="#475569">• Sky &amp; Flora (SegFormer)</text>
+            </g>
+
+            <g transform="translate(185, 60)">
+              <rect x="0" y="0" width="160" height="230" rx="8" fill="#ffffff" stroke="#ffedd5"/>
+              <text x="80" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#9a3412">Bundle B</text>
+              <text x="80" y="42" font-size="11" text-anchor="middle" fill="#ea580c">Structure Preservation</text>
+              <image href="../assets/demo_images/downtown_la_edges.jpg" x="10" y="55" width="140" height="90" preserveAspectRatio="xMidYMid slice"/>
+              <text x="80" y="165" font-size="11" text-anchor="middle" fill="#475569">• Canny Edge Contours</text>
+              <text x="80" y="185" font-size="11" text-anchor="middle" fill="#475569">• Monocular Depth Map</text>
+              <text x="80" y="205" font-size="11" text-anchor="middle" fill="#475569">• Macro Gaussian Blur</text>
+            </g>
+
+            <g transform="translate(355, 60)">
+              <rect x="0" y="0" width="160" height="230" rx="8" fill="#ffffff" stroke="#ffedd5"/>
+              <text x="80" y="25" font-size="13" font-weight="700" text-anchor="middle" fill="#9a3412">Bundle C</text>
+              <text x="80" y="42" font-size="11" text-anchor="middle" fill="#ea580c">Layout Disruption</text>
+              <image href="../assets/demo_images/downtown_la_patch32.jpg" x="10" y="55" width="140" height="90" preserveAspectRatio="xMidYMid slice"/>
+              <text x="80" y="165" font-size="11" text-anchor="middle" fill="#475569">• Patch-16 Shuffled</text>
+              <text x="80" y="185" font-size="11" text-anchor="middle" fill="#475569">• Patch-32 Shuffled</text>
+              <text x="80" y="205" font-size="11" text-anchor="middle" fill="#475569">• Patch-64 Shuffled</text>
+            </g>
+
+            <g transform="translate(15, 305)">
+              <rect x="0" y="0" width="500" height="100" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+              <text x="20" y="25" font-size="12" font-weight="700" fill="#166534">Prompt Controls &amp; Permutation (P_swap)</text>
+              <text x="20" y="50" font-size="11" fill="#334155">Original Baseline vs Length-Matched vs Visual Descriptors vs Swapped Descriptors</text>
+              <text x="20" y="75" font-size="11" font-weight="600" fill="#15803d">Tests falsifiability: Do LLM-generated cues ground to vision or act as decorative tokens?</text>
+            </g>
+          </g>
+
+          <path d="M 915 445 L 915 465" stroke="#6366f1" stroke-width="4" marker-end="url(#arrowhead)" fill="none"/>
+
+          <g id="p4" transform="translate(650, 470)">
+            <rect x="0" y="0" width="530" height="190" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="20" y="35" font-size="15" font-weight="700" fill="#1e293b">4. Representational Interpretation</text>
+            
+            <g transform="translate(20, 50)">
+              <rect x="0" y="0" width="235" height="120" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="15" y="25" font-size="13" font-weight="700" fill="#1e40af">Layout Sensitivity</text>
+              <text x="15" y="50" font-size="11" fill="#334155">• Fine-tuning demands intact 2D spatial arrangement.</text>
+              <text x="15" y="85" font-size="11" fill="#334155">• Scrambling degrades geolocation 3× more than Caltech-101.</text>
+            </g>
+
+            <g transform="translate(275, 50)">
+              <rect x="0" y="0" width="235" height="120" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+              <text x="15" y="25" font-size="13" font-weight="700" fill="#991b1b">Appearance Cue Dependence</text>
+              <text x="15" y="50" font-size="11" fill="#334155">• Text &amp; vegetation removal incurs measurable drop.</text>
+              <text x="15" y="85" font-size="11" font-weight="700" fill="#b91c1c">Conclusion: Mixed Account (Layout + Cues)</text>
+            </g>
+          </g>
+
+          <defs>
+            <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+              <polygon points="0 0, 6 3, 0 6" fill="#6366f1" />
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <div class="figure-caption">
+        <strong>Figure 2: Methodological Workflow & Representation Probing Pipeline.</strong>
+        (1) Spatial uniform ingestion of 9,085 multi-heading Street View panoramas across 8 LA regions; (2) Multi-strategy CLIP adaptation comparing Zero-shot, Linear Probing (LP-T, LP-C), LoRA, and Full-FT; (3) Controlled Probing across Cue Removal (Bundle A), Structure Proxies (Bundle B), and Spatial Layout Disruption (Bundle C); (4) Final representational decomposition supporting the <em>Mixed Account</em>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Live Demo - Interactive Probing Inspector -->
+  <section id="livedemo" class="container">
+    <div class="section-header">
+      <span class="section-tag">Interactive Probing Inspector</span>
+      <h2 class="section-title">Live Demonstration: Real-Time Model Inference</h2>
+      <p class="section-subtitle">Select any neighborhood and controlled intervention below to view the actual modified street view panorama and inspect live predictions across Zero-shot, LoRA, and Full Fine-Tuning models.</p>
+    </div>
+
+    <div class="inspector-container">
+      <div class="inspector-region-bar">
+        <span class="inspector-bar-label">Neighborhood:</span>
+        <button class="region-btn active" data-region="downtown_la">Downtown LA</button>
+        <button class="region-btn" data-region="hollywood">Hollywood</button>
+        <button class="region-btn" data-region="santa_monica">Santa Monica</button>
+        <button class="region-btn" data-region="koreatown">Koreatown</button>
+        <button class="region-btn" data-region="beverly_hills">Beverly Hills</button>
+      </div>
+
+      <div class="inspector-tabs">
+        <button class="tab-btn active" data-intervention="clean">
+          <span>🖼️</span> (B) Clean Test Image
+        </button>
+        <button class="tab-btn" data-intervention="text_masked">
+          <span>🔤</span> (C) EasyOCR Text Masked
+        </button>
+        <button class="tab-btn" data-intervention="vehicle_masked">
+          <span>🚗</span> (D) YOLOv8 Vehicle Masked
+        </button>
+        <button class="tab-btn" data-intervention="sky_masked">
+          <span>☁️</span> (E) SegFormer Sky Masked
+        </button>
+        <button class="tab-btn" data-intervention="vegetation_masked">
+          <span>🌴</span> (F) SegFormer Flora Masked
+        </button>
+        <button class="tab-btn" data-intervention="edges">
+          <span>📐</span> (G) Canny Edge Contours
+        </button>
+        <button class="tab-btn" data-intervention="patch32">
+          <span>🧩</span> (H) Patch-32 Shuffled
+        </button>
+        <button class="tab-btn" data-intervention="train_heading">
+          <span>📍</span> (A) Train Heading (Same Loc)
+        </button>
+      </div>
+
+      <div class="inspector-body">
+        <div class="inspector-viewer">
+          <img src="../assets/demo_images/downtown_la_clean.jpg" alt="Probing Image Transformation" id="demo-viewer-img">
+          <div class="inspector-tag-overlay" id="demo-overlay-tag">(B) Clean Test Image</div>
+        </div>
+
+        <div class="inspector-predictions">
+          <div class="pred-header">
+            <h3 id="demo-region-title">Downtown Los Angeles (0.0 m Same Coord)</h3>
+            <p id="demo-region-coords">Coordinates: 34.0457°N, 118.2451°W</p>
+          </div>
+
+          <div class="model-pred-card incorrect" id="card-zs">
+            <div class="model-card-top">
+              <span class="model-name">Zero-shot CLIP (ViT-L-14)</span>
+              <span class="pred-badge mismatch" id="badge-zs">✗ Mispredict</span>
+            </div>
+            <div class="pred-detail">
+              <span id="pred-zs">Predicted: Venice Beach</span>
+              <span id="conf-zs">Confidence: 40.5%</span>
+            </div>
+            <div class="pred-conf-bar">
+              <div class="pred-conf-fill rose" id="fill-zs" style="width: 40.5%;"></div>
+            </div>
+          </div>
+
+          <div class="model-pred-card correct" id="card-lora">
+            <div class="model-card-top">
+              <span class="model-name">LoRA Adapted (r=8)</span>
+              <span class="pred-badge match" id="badge-lora">✓ Match</span>
+            </div>
+            <div class="pred-detail">
+              <span id="pred-lora">Predicted: Downtown Los Angeles</span>
+              <span id="conf-lora">Confidence: 99.4%</span>
+            </div>
+            <div class="pred-conf-bar">
+              <div class="pred-conf-fill" id="fill-lora" style="width: 99.4%;"></div>
+            </div>
+          </div>
+
+          <div class="model-pred-card correct" id="card-ft">
+            <div class="model-card-top">
+              <span class="model-name">Full Fine-Tuning (Full-FT)</span>
+              <span class="pred-badge match" id="badge-ft">✓ Match</span>
+            </div>
+            <div class="pred-detail">
+              <span id="pred-ft">Predicted: Downtown Los Angeles</span>
+              <span id="conf-ft">Confidence: 99.9%</span>
+            </div>
+            <div class="pred-conf-bar">
+              <div class="pred-conf-fill" id="fill-ft" style="width: 99.9%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Figure 3 - Combined 4-Panel Quantitative Probing Dissection -->
+  <section id="dissection" class="container">
+    <div class="section-header">
+      <span class="section-tag">Quantitative Probing Dissection</span>
+      <h2 class="section-title">Figure 3: 4-Panel Dissection of Learned Representations</h2>
+      <p class="section-subtitle">Evaluating (a) Regional Adaptation, (b) Cue Removal &amp; Shortcut Reliance, (c) Structural Sufficiency Retention, and (d) Layout Sensitivity vs. Non-Geographic Control.</p>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-img-wrapper">
+        <img src="../figures/Fig_Combined_Dissection.png" alt="Figure 3: 4-Panel Dissection of Representations" class="figure-img">
+      </div>
+      <div class="figure-caption">
+        <strong>Figure 3: Multi-Faceted Probing Results.</strong>
+        <strong>(a) Regional Adaptation:</strong> Zero-shot vs. Full-FT accuracy jump across all 8 regions (reaching up to 90.6% in Downtown LA and 90.2% in Pasadena);
+        <strong>(b) Cue Removal:</strong> Accuracy drop and Shortcut Reliance ($\text{SR}$) when removing Text, Vehicles, Sky, and Vegetation compared against random geometric controls;
+        <strong>(c) Structural Sufficiency:</strong> Performance retention when models receive <em>only</em> Canny Edge contours ($\text{SS}_{\text{edge}} > 47\%$) or Macro Gaussian Blur ($\text{SS}_{\text{blur}} > 55\%$);
+        <strong>(d) Layout Sensitivity:</strong> Steep accuracy decay under progressive patch scrambling ($64\times 64$, $32\times 32$, $16\times 16$), dropping significantly faster than general object recognition on Caltech-101.
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Figure 4 - Qualitative 8-Column Matched Probing Examples -->
+  <section id="qualitative" class="container">
+    <div class="section-header">
+      <span class="section-tag">Qualitative Visual Dissection</span>
+      <h2 class="section-title">Figure 4: Qualitative 8-Column Matched Probing Examples</h2>
+      <p class="section-subtitle">Full visual comparison across 5 representative neighborhood cases under all 7 controlled image interventions.</p>
+    </div>
+
+    <div class="figure-card">
+      <div class="figure-img-wrapper">
+        <img src="../figures/Fig_Qualitative_Matched_8Col.png" alt="Figure 4: Qualitative 8-Column Matched Probing Examples" class="figure-img">
+      </div>
+      <div class="figure-caption">
+        <strong>Figure 4: Qualitative Matched Case Analysis Across 8 Interventions.</strong>
+        Rows 1–5 represent Downtown LA, Hollywood, Santa Monica, Koreatown, and Beverly Hills. Columns (A–H) display: (A) Train Heading at same coordinate, (B) Test Heading, (C) EasyOCR Text Masked, (D) YOLOv8 Vehicle Masked, (E) SegFormer Sky Masked, (F) SegFormer Flora Masked, (G) Canny Edge Contours, (H) Patch-32 Shuffled. Boxes below each image record model predictions (ZS, LoRA, Full-FT), confidence percentages, and correct/incorrect status.
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmark Table Section -->
+  <section id="benchmark" class="container">
+    <div class="section-header">
+      <span class="section-tag">Comprehensive Evaluation</span>
+      <h2 class="section-title">Capability Ceiling Benchmark Table</h2>
+      <p class="section-subtitle">Comparing 6 adaptation strategies across ResNet and ViT backbones on the held-out test split.</p>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Model Architecture</th>
+            <th>Strategy</th>
+            <th>Test Acc (%)</th>
+            <th>Mean Error (km)</th>
+            <th>Median Error (km)</th>
+            <th>Acc @ 5km (%)</th>
+            <th>Acc @ 10km (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4"><strong>ResNet-50</strong></td>
+            <td>Zero-shot</td>
+            <td>21.4%</td>
+            <td>18.2 km</td>
+            <td>14.1 km</td>
+            <td>32.1%</td>
+            <td>51.4%</td>
+          </tr>
+          <tr>
+            <td>LP-T (Linear Probe Text)</td>
+            <td>42.8%</td>
+            <td>11.6 km</td>
+            <td>7.2 km</td>
+            <td>54.0%</td>
+            <td>71.8%</td>
+          </tr>
+          <tr>
+            <td>LoRA (Partial Unfreeze)</td>
+            <td>58.2%</td>
+            <td>8.4 km</td>
+            <td>4.8 km</td>
+            <td>69.5%</td>
+            <td>82.3%</td>
+          </tr>
+          <tr>
+            <td>Full Fine-Tuning</td>
+            <td>64.7%</td>
+            <td>6.9 km</td>
+            <td>3.5 km</td>
+            <td>75.1%</td>
+            <td>88.0%</td>
+          </tr>
+
+          <tr>
+            <td rowspan="4"><strong>ViT-B-32</strong></td>
+            <td>Zero-shot</td>
+            <td>24.8%</td>
+            <td>16.5 km</td>
+            <td>12.8 km</td>
+            <td>36.8%</td>
+            <td>56.2%</td>
+          </tr>
+          <tr>
+            <td>LP-T</td>
+            <td>48.6%</td>
+            <td>9.8 km</td>
+            <td>5.9 km</td>
+            <td>61.2%</td>
+            <td>77.4%</td>
+          </tr>
+          <tr>
+            <td>LoRA (r=8)</td>
+            <td>67.3%</td>
+            <td>5.8 km</td>
+            <td>2.9 km</td>
+            <td>78.4%</td>
+            <td>89.6%</td>
+          </tr>
+          <tr>
+            <td>Full Fine-Tuning</td>
+            <td>71.5%</td>
+            <td>4.9 km</td>
+            <td>2.1 km</td>
+            <td>83.2%</td>
+            <td>92.4%</td>
+          </tr>
+
+          <tr>
+            <td rowspan="6"><strong>ViT-L-14</strong></td>
+            <td>Zero-shot</td>
+            <td>28.1%</td>
+            <td>14.8 km</td>
+            <td>10.2 km</td>
+            <td>41.5%</td>
+            <td>62.0%</td>
+          </tr>
+          <tr>
+            <td>LP-T</td>
+            <td>53.4%</td>
+            <td>8.2 km</td>
+            <td>4.5 km</td>
+            <td>67.9%</td>
+            <td>83.5%</td>
+          </tr>
+          <tr>
+            <td>LP-C (Linear Probe Classifier)</td>
+            <td>61.2%</td>
+            <td>6.8 km</td>
+            <td>3.4 km</td>
+            <td>73.6%</td>
+            <td>87.2%</td>
+          </tr>
+          <tr>
+            <td>Contrastive Fine-Tuning</td>
+            <td>74.5%</td>
+            <td>4.2 km</td>
+            <td>1.8 km</td>
+            <td>84.9%</td>
+            <td>94.0%</td>
+          </tr>
+          <tr>
+            <td class="highlight-cell">LoRA (r=8)</td>
+            <td class="highlight-cell">76.8%</td>
+            <td class="highlight-cell">3.8 km</td>
+            <td class="highlight-cell">1.4 km</td>
+            <td class="highlight-cell">87.1%</td>
+            <td class="highlight-cell">95.4%</td>
+          </tr>
+          <tr>
+            <td class="highlight-cell">Full Fine-Tuning</td>
+            <td class="highlight-cell">78.2%</td>
+            <td class="highlight-cell">3.5 km</td>
+            <td class="highlight-cell">1.2 km</td>
+            <td class="highlight-cell">88.6%</td>
+            <td class="highlight-cell">96.1%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BibTeX Citation -->
+  <section id="citation" class="container">
+    <div class="section-header">
+      <span class="section-tag">Reference</span>
+      <h2 class="section-title">BibTeX Citation</h2>
+    </div>
+
+    <div class="bibtex-box">
+      <div class="bibtex-header">
+        <h3>Citation</h3>
+        <button class="copy-btn" id="copy-bibtex-btn">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          Copy
+        </button>
+      </div>
+      <pre><code id="bibtex-code">@article{clip_geolocation_probing2026,
+  title={Probing Spatial and Visual Cues in CLIP Geolocation},
+  author={Geolocation Representation Research Group},
+  journal={arXiv preprint arXiv:2608.xxxxx},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 0.5rem;">
+        <strong>Probing Spatial and Visual Cues in CLIP Geolocation</strong> — Official Research Project Website
+      </p>
+      <p>
+        Hosted on GitHub Pages • Code and data licensed under <a href="../LICENSE">MIT License</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

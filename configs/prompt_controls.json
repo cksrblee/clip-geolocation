@@ -1,0 +1,12 @@
+{
+  "visual_descriptors": {
+    "downtown_la": "tall glass-and-steel high-rises, dense building frontage, broad multilane streets, and sparse street trees",
+    "hollywood": "low- and mid-rise commercial blocks, theater marquees and billboards, palm-lined boulevards, and dry hills behind the street grid",
+    "beverly_hills": "polished low-rise retail facades, large detached homes, manicured lawns and tall palms, and clean wide streets",
+    "santa_monica": "mid-rise coastal blocks, broad boulevards, palms and drought-tolerant landscaping, and bright open streets near the ocean",
+    "venice_beach": "eclectic low-rise buildings, colorful murals, palms, narrow residential streets, and pedestrian-oriented coastal blocks",
+    "koreatown": "dense mid-rise apartment and commercial blocks, closely spaced storefronts, limited tree canopy, and wide traffic-heavy streets",
+    "pasadena": "historic brick and Spanish-revival low-rise buildings, mature tree canopy, broad residential streets, and landscaped setbacks",
+    "long_beach": "mid-rise waterfront blocks, industrial port structures, palms, broad avenues, and mixed residential-commercial streets"
+  }
+}
