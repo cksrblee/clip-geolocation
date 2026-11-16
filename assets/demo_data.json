@@ -1,0 +1,802 @@
+{
+  "downtown_la": {
+    "region_id": "downtown_la",
+    "region_name": "Downtown Los Angeles",
+    "coords": "34.0457\u00b0N, 118.2451\u00b0W",
+    "dist_str": "0.0 m (Same Coord)",
+    "interventions": {
+      "train_heading": {
+        "label": "(A) Train Heading",
+        "image_url": "assets/demo_images/downtown_la_train_heading.jpg",
+        "zero_shot": {
+          "pred": "Koreatown",
+          "conf": 21.515262126922607,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.76366758346558,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.99527931213379,
+          "match": true
+        }
+      },
+      "clean": {
+        "label": "(B) Clean Test Image",
+        "image_url": "assets/demo_images/downtown_la_clean.jpg",
+        "zero_shot": {
+          "pred": "Venice Beach",
+          "conf": 40.54823815822601,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.39271807670593,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.99370574951172,
+          "match": true
+        }
+      },
+      "text_masked": {
+        "label": "(C) EasyOCR Text Masked",
+        "image_url": "assets/demo_images/downtown_la_text_masked.jpg",
+        "zero_shot": {
+          "pred": "Venice Beach",
+          "conf": 26.376262307167053,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.7397780418396,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.99014139175415,
+          "match": true
+        }
+      },
+      "vehicle_masked": {
+        "label": "(D) YOLOv8 Vehicle Masked",
+        "image_url": "assets/demo_images/downtown_la_vehicle_masked.jpg",
+        "zero_shot": {
+          "pred": "Venice Beach",
+          "conf": 40.633147954940796,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 96.92332148551941,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.12091493606567,
+          "match": true
+        }
+      },
+      "sky_masked": {
+        "label": "(E) SegFormer Sky Masked",
+        "image_url": "assets/demo_images/downtown_la_sky_masked.jpg",
+        "zero_shot": {
+          "pred": "Venice Beach",
+          "conf": 39.698100090026855,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.54783320426941,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.99338388442993,
+          "match": true
+        }
+      },
+      "vegetation_masked": {
+        "label": "(F) SegFormer Flora Masked",
+        "image_url": "assets/demo_images/downtown_la_vegetation_masked.jpg",
+        "zero_shot": {
+          "pred": "Venice Beach",
+          "conf": 25.75642168521881,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.93896484375,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 99.99454021453857,
+          "match": true
+        }
+      },
+      "edges": {
+        "label": "(G) Canny Edge Contours",
+        "image_url": "assets/demo_images/downtown_la_edges.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 25.509902834892273,
+          "match": false
+        },
+        "lora": {
+          "pred": "Pasadena",
+          "conf": 98.36582541465759,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 40.46030044555664,
+          "match": false
+        }
+      },
+      "patch32": {
+        "label": "(H) Patch-32 Shuffled",
+        "image_url": "assets/demo_images/downtown_la_patch32.jpg",
+        "zero_shot": {
+          "pred": "Hollywood",
+          "conf": 23.984651267528534,
+          "match": false
+        },
+        "lora": {
+          "pred": "Downtown Los Angeles",
+          "conf": 81.7434310913086,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 90.9349262714386,
+          "match": false
+        }
+      }
+    }
+  },
+  "hollywood": {
+    "region_id": "hollywood",
+    "region_name": "Hollywood",
+    "coords": "34.0943\u00b0N, 118.3319\u00b0W",
+    "dist_str": "0.0 m (Same Coord)",
+    "interventions": {
+      "train_heading": {
+        "label": "(A) Train Heading",
+        "image_url": "assets/demo_images/hollywood_train_heading.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 41.801682114601135,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 99.85149502754211,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.99817609786987,
+          "match": true
+        }
+      },
+      "clean": {
+        "label": "(B) Clean Test Image",
+        "image_url": "assets/demo_images/hollywood_clean.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 31.85698390007019,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 74.00680780410767,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.86129999160767,
+          "match": true
+        }
+      },
+      "text_masked": {
+        "label": "(C) EasyOCR Text Masked",
+        "image_url": "assets/demo_images/hollywood_text_masked.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 34.4061017036438,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 71.22410535812378,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.88924860954285,
+          "match": true
+        }
+      },
+      "vehicle_masked": {
+        "label": "(D) YOLOv8 Vehicle Masked",
+        "image_url": "assets/demo_images/hollywood_vehicle_masked.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 25.763869285583496,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 95.24496793746948,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.87947940826416,
+          "match": true
+        }
+      },
+      "sky_masked": {
+        "label": "(E) SegFormer Sky Masked",
+        "image_url": "assets/demo_images/hollywood_sky_masked.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 31.204694509506226,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 99.87127780914307,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.81200098991394,
+          "match": true
+        }
+      },
+      "vegetation_masked": {
+        "label": "(F) SegFormer Flora Masked",
+        "image_url": "assets/demo_images/hollywood_vegetation_masked.jpg",
+        "zero_shot": {
+          "pred": "Pasadena",
+          "conf": 18.537898361682892,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 49.926069378852844,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 82.22629427909851,
+          "match": true
+        }
+      },
+      "edges": {
+        "label": "(G) Canny Edge Contours",
+        "image_url": "assets/demo_images/hollywood_edges.jpg",
+        "zero_shot": {
+          "pred": "Koreatown",
+          "conf": 18.239785730838776,
+          "match": false
+        },
+        "lora": {
+          "pred": "Koreatown",
+          "conf": 41.19788706302643,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 64.89829421043396,
+          "match": true
+        }
+      },
+      "patch32": {
+        "label": "(H) Patch-32 Shuffled",
+        "image_url": "assets/demo_images/hollywood_patch32.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 21.594198048114777,
+          "match": false
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 63.52313756942749,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Pasadena",
+          "conf": 64.03645873069763,
+          "match": false
+        }
+      }
+    }
+  },
+  "santa_monica": {
+    "region_id": "santa_monica",
+    "region_name": "Santa Monica",
+    "coords": "34.0078\u00b0N, 118.4932\u00b0W",
+    "dist_str": "0.0 m (Same Coord)",
+    "interventions": {
+      "train_heading": {
+        "label": "(A) Train Heading",
+        "image_url": "assets/demo_images/santa_monica_train_heading.jpg",
+        "zero_shot": {
+          "pred": "Venice Beach",
+          "conf": 75.9744644165039,
+          "match": false
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 99.82582926750183,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 99.99898672103882,
+          "match": true
+        }
+      },
+      "clean": {
+        "label": "(B) Clean Test Image",
+        "image_url": "assets/demo_images/santa_monica_clean.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 54.231542348861694,
+          "match": true
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 98.0567991733551,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 99.83956217765808,
+          "match": true
+        }
+      },
+      "text_masked": {
+        "label": "(C) EasyOCR Text Masked",
+        "image_url": "assets/demo_images/santa_monica_text_masked.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 41.409069299697876,
+          "match": true
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 98.73353838920593,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 99.72363710403442,
+          "match": true
+        }
+      },
+      "vehicle_masked": {
+        "label": "(D) YOLOv8 Vehicle Masked",
+        "image_url": "assets/demo_images/santa_monica_vehicle_masked.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 55.286502838134766,
+          "match": true
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 98.1919527053833,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 99.8641312122345,
+          "match": true
+        }
+      },
+      "sky_masked": {
+        "label": "(E) SegFormer Sky Masked",
+        "image_url": "assets/demo_images/santa_monica_sky_masked.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 52.50261425971985,
+          "match": true
+        },
+        "lora": {
+          "pred": "Long Beach",
+          "conf": 80.87972402572632,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 99.7654914855957,
+          "match": true
+        }
+      },
+      "vegetation_masked": {
+        "label": "(F) SegFormer Flora Masked",
+        "image_url": "assets/demo_images/santa_monica_vegetation_masked.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 52.14208364486694,
+          "match": true
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 99.34213757514954,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 99.90848302841187,
+          "match": true
+        }
+      },
+      "edges": {
+        "label": "(G) Canny Edge Contours",
+        "image_url": "assets/demo_images/santa_monica_edges.jpg",
+        "zero_shot": {
+          "pred": "Koreatown",
+          "conf": 34.24234688282013,
+          "match": false
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 36.70468032360077,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Downtown Los Angeles",
+          "conf": 82.19904899597168,
+          "match": false
+        }
+      },
+      "patch32": {
+        "label": "(H) Patch-32 Shuffled",
+        "image_url": "assets/demo_images/santa_monica_patch32.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 39.43053483963013,
+          "match": true
+        },
+        "lora": {
+          "pred": "Santa Monica",
+          "conf": 98.45502972602844,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Santa Monica",
+          "conf": 98.6764669418335,
+          "match": true
+        }
+      }
+    }
+  },
+  "koreatown": {
+    "region_id": "koreatown",
+    "region_name": "Koreatown",
+    "coords": "34.0654\u00b0N, 118.2944\u00b0W",
+    "dist_str": "0.0 m (Same Coord)",
+    "interventions": {
+      "train_heading": {
+        "label": "(A) Train Heading",
+        "image_url": "assets/demo_images/koreatown_train_heading.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 32.572194933891296,
+          "match": false
+        },
+        "lora": {
+          "pred": "Koreatown",
+          "conf": 99.77377653121948,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Koreatown",
+          "conf": 99.98458623886108,
+          "match": true
+        }
+      },
+      "clean": {
+        "label": "(B) Clean Test Image",
+        "image_url": "assets/demo_images/koreatown_clean.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 30.241885781288147,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 98.35308194160461,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.98867511749268,
+          "match": false
+        }
+      },
+      "text_masked": {
+        "label": "(C) EasyOCR Text Masked",
+        "image_url": "assets/demo_images/koreatown_text_masked.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 34.4564288854599,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 99.20501112937927,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.98838901519775,
+          "match": false
+        }
+      },
+      "vehicle_masked": {
+        "label": "(D) YOLOv8 Vehicle Masked",
+        "image_url": "assets/demo_images/koreatown_vehicle_masked.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 29.963448643684387,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 97.10809588432312,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.99117851257324,
+          "match": false
+        }
+      },
+      "sky_masked": {
+        "label": "(E) SegFormer Sky Masked",
+        "image_url": "assets/demo_images/koreatown_sky_masked.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 29.048988223075867,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 99.09145832061768,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 99.98960494995117,
+          "match": false
+        }
+      },
+      "vegetation_masked": {
+        "label": "(F) SegFormer Flora Masked",
+        "image_url": "assets/demo_images/koreatown_vegetation_masked.jpg",
+        "zero_shot": {
+          "pred": "Koreatown",
+          "conf": 24.690787494182587,
+          "match": true
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 65.06869196891785,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 96.01580500602722,
+          "match": false
+        }
+      },
+      "edges": {
+        "label": "(G) Canny Edge Contours",
+        "image_url": "assets/demo_images/koreatown_edges.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 16.052888333797455,
+          "match": false
+        },
+        "lora": {
+          "pred": "Pasadena",
+          "conf": 37.46884763240814,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Pasadena",
+          "conf": 54.42509651184082,
+          "match": false
+        }
+      },
+      "patch32": {
+        "label": "(H) Patch-32 Shuffled",
+        "image_url": "assets/demo_images/koreatown_patch32.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 31.0520201921463,
+          "match": false
+        },
+        "lora": {
+          "pred": "Hollywood",
+          "conf": 68.38132739067078,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Hollywood",
+          "conf": 83.1081211566925,
+          "match": false
+        }
+      }
+    }
+  },
+  "beverly_hills": {
+    "region_id": "beverly_hills",
+    "region_name": "Beverly Hills",
+    "coords": "34.0633\u00b0N, 118.4073\u00b0W",
+    "dist_str": "0.68 km (Separated Loc)",
+    "interventions": {
+      "train_heading": {
+        "label": "(A) Train Heading",
+        "image_url": "assets/demo_images/beverly_hills_train_heading.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 56.17145299911499,
+          "match": true
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 99.99929666519165,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Beverly Hills",
+          "conf": 99.99828338623047,
+          "match": true
+        }
+      },
+      "clean": {
+        "label": "(B) Clean Test Image",
+        "image_url": "assets/demo_images/beverly_hills_clean.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 69.80042457580566,
+          "match": true
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 55.49899339675903,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Beverly Hills",
+          "conf": 97.96207547187805,
+          "match": true
+        }
+      },
+      "text_masked": {
+        "label": "(C) EasyOCR Text Masked",
+        "image_url": "assets/demo_images/beverly_hills_text_masked.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 73.13830852508545,
+          "match": true
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 95.71917057037354,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Beverly Hills",
+          "conf": 97.50401973724365,
+          "match": true
+        }
+      },
+      "vehicle_masked": {
+        "label": "(D) YOLOv8 Vehicle Masked",
+        "image_url": "assets/demo_images/beverly_hills_vehicle_masked.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 69.35833692550659,
+          "match": true
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 54.78281378746033,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Beverly Hills",
+          "conf": 97.76650667190552,
+          "match": true
+        }
+      },
+      "sky_masked": {
+        "label": "(E) SegFormer Sky Masked",
+        "image_url": "assets/demo_images/beverly_hills_sky_masked.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 60.04594564437866,
+          "match": true
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 54.478538036346436,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Beverly Hills",
+          "conf": 99.28861260414124,
+          "match": true
+        }
+      },
+      "vegetation_masked": {
+        "label": "(F) SegFormer Flora Masked",
+        "image_url": "assets/demo_images/beverly_hills_vegetation_masked.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 24.016301333904266,
+          "match": true
+        },
+        "lora": {
+          "pred": "Beverly Hills",
+          "conf": 99.4868516921997,
+          "match": true
+        },
+        "full_ft": {
+          "pred": "Beverly Hills",
+          "conf": 97.93208837509155,
+          "match": true
+        }
+      },
+      "edges": {
+        "label": "(G) Canny Edge Contours",
+        "image_url": "assets/demo_images/beverly_hills_edges.jpg",
+        "zero_shot": {
+          "pred": "Santa Monica",
+          "conf": 16.703619062900543,
+          "match": false
+        },
+        "lora": {
+          "pred": "Pasadena",
+          "conf": 26.520952582359314,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Koreatown",
+          "conf": 30.84760010242462,
+          "match": false
+        }
+      },
+      "patch32": {
+        "label": "(H) Patch-32 Shuffled",
+        "image_url": "assets/demo_images/beverly_hills_patch32.jpg",
+        "zero_shot": {
+          "pred": "Beverly Hills",
+          "conf": 30.963650345802307,
+          "match": true
+        },
+        "lora": {
+          "pred": "Pasadena",
+          "conf": 50.744569301605225,
+          "match": false
+        },
+        "full_ft": {
+          "pred": "Pasadena",
+          "conf": 96.07734084129333,
+          "match": false
+        }
+      }
+    }
+  }
+}
